@@ -6,18 +6,22 @@ interface SquareProps {
   value: number
 }
 
-class Square extends React.Component<SquareProps> {
+interface SquareState {
+  value: String | null
+}
+
+class Square extends React.Component<SquareProps, SquareState> {
   constructor(props: SquareProps) {
     super(props)
-    this.state ={
+    this.state = {
       value: null
     }
   }
 
   render() {
     return (
-      <button className="square" onClick={() => {alert("Click!")}}>
-        {this.props.value}
+      <button className="square" onClick={() => {this.setState({value: "X"})} }>
+        {this.state.value}
       </button>
     );
   }
